@@ -6,8 +6,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 ### Added for new features.
-- handlers for all 3 reward apis [phv](https://github.com/prithvihv)
 ### Changed for changes in existing functionality.
 ### Deprecated for soon-to-be removed features.
 ### Removed for now removed features.
 ### Fixed for any bug fixes.
+
+## [0.0.1] - 2022-11-22
+### Added
+- handlers for all 3 reward apis and credit [@phv](https://github.com/prithvihv)

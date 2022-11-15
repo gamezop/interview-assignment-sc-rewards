@@ -11,6 +11,7 @@ require (
 	github.com/joho/godotenv v1.4.0
 	github.com/kelseyhightower/envconfig v1.4.0
 	github.com/lib/pq v1.10.4
+	github.com/rs/zerolog v1.26.1
 	github.com/stretchr/testify v1.7.0
 	gopkg.in/h2non/gock.v1 v1.1.2
 )
@@ -48,7 +49,6 @@ require (
 	github.com/prometheus/client_model v0.2.0 // indirect
 	github.com/prometheus/common v0.30.0 // indirect
 	github.com/prometheus/procfs v0.7.3 // indirect
-	github.com/rs/zerolog v1.26.1 // indirect
 	github.com/sirupsen/logrus v1.8.1 // indirect
 	github.com/speps/go-hashids v2.0.0+incompatible // indirect
 	github.com/tinylib/msgp v1.1.2 // indirect

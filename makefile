@@ -26,7 +26,7 @@ builddocker: clean build
 	rm -r vendor || true
 
 deploy: builddocker
-	docker tag gamezop/interview-assignment gamezop/interview-assignment:$(VERSION)
+	docker tag gamezop/interview-assignment gamezop/interview-assignment:sc-rewards-$(VERSION)
 	docker push gamezop/interview-assignment:sc-rewards-$(VERSION)
 
 releaseBuild: deploy commitAndTag
