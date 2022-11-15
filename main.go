@@ -282,9 +282,15 @@ func Router(repository *repo.Queries, httpClient *http.Client) *gin.Engine {
 	)
 	r.POST("r1/payout", handlerR1Payout(ginModule, repository))
 	r.POST("r2/payout", handlerR2Payout(ginModule, repository))
-	r.POST("r2/payout/status", handlerR2Status(ginModule, repository))
+	// this api can be used to pull data for any reward type
+	r.GET("r2/payout/status", handlerR2Status(ginModule, repository))
 	r.POST("r3/payout", handlerR3Payout(ginModule, repository, httpClient))
-	// TODO: implement /credit
+	r.PUT("credit", func(c *gin.Context) {
+		l := gh.RequestLogger(c)
+		body, err := c.GetRawData()
+		errr.LogIfErr(err, &l, "failed to get body")
+		l.Info().Str("body", string(body)).Msg("credit api called")
+	})
 
 	return r
 }
