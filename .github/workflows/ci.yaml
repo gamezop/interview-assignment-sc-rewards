@@ -4,7 +4,7 @@ on:
 
 jobs:
   test:
-    uses: gamezop/github-action-workflows/.github/workflows/golang-test.yaml
+    uses: gamezop/github-action-workflows/.github/workflows/golang-test.yaml@master
     secrets:
       GITHUB_ACCESS_TOKEN: ${{ secrets.GO_MODULES_GITHUB_TOKEN }}
       DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
