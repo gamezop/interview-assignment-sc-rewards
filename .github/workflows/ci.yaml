@@ -6,7 +6,7 @@ jobs:
   test:
     uses: gamezop/github-action-workflows/.github/workflows/golang-test.yaml@main
     secrets:
-      GITHUB_ACCESS_TOKEN: ${{ secrets.GO_MODULES_GITHUB_TOKEN }}
+      GITHUB_ACCESS_TOKEN: ${{ secrets.PUBLIC_GO_MODULES_GITHUB_TOKEN }}
     with:
       go_version: 1.17
       run_docker_login: false
