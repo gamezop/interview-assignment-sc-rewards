@@ -10,7 +10,6 @@ import (
 	"github.com/gamezop/interview-assignment-sc-rewards/repo"
 	"github.com/gamezop/jinbe/pkg/db_psql"
 	"github.com/gamezop/jinbe/pkg/errr"
-	"github.com/gamezop/jinbe/pkg/http/ginhelpers"
 	gh "github.com/gamezop/jinbe/pkg/http/ginhelpers"
 	"github.com/gamezop/jinbe/pkg/http/httpclient"
 	"github.com/gamezop/jinbe/pkg/random"
@@ -100,7 +99,7 @@ func handlerR1Payout(
 	r *repo.Queries,
 ) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		ctx := ginhelpers.GetDDCtxFromGinOrBackground(c)
+		ctx := gh.GetDDCtxFromGinOrBackground(c)
 		l := gh.RequestLogger(c)
 		var req RequestBodyRewardPayout
 		if err := c.ShouldBindJSON(&req); errr.IfErrAndLog(err, &l, "validation") {
@@ -122,7 +121,6 @@ func handlerR1Payout(
 			Status:  rewardPayoutDetails.Status,
 			OrderId: rewardPayoutDetails.OrderID,
 		})
-		return
 	}
 }
 
@@ -131,7 +129,7 @@ func handlerR2Payout(
 	r *repo.Queries,
 ) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		ctx := ginhelpers.GetDDCtxFromGinOrBackground(c)
+		ctx := gh.GetDDCtxFromGinOrBackground(c)
 		l := gh.RequestLogger(c)
 		var req RequestBodyRewardPayout
 		if err := c.ShouldBindJSON(&req); errr.IfErrAndLog(err, &l, "validation") {
@@ -166,7 +164,6 @@ func handlerR2Payout(
 			Status:  rewardPayoutDetails.Status,
 			OrderId: rewardPayoutDetails.OrderID,
 		})
-		return
 	}
 }
 
@@ -183,7 +180,7 @@ func handlerR2Status(
 	r *repo.Queries,
 ) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		ctx := ginhelpers.GetDDCtxFromGinOrBackground(c)
+		ctx := gh.GetDDCtxFromGinOrBackground(c)
 		l := gh.RequestLogger(c)
 		var req RequestQueryParamsRewardPayout2Status
 		if err := c.ShouldBindQuery(&req); errr.IfErrAndLog(err, &l, "validation") {
@@ -200,7 +197,6 @@ func handlerR2Status(
 		gM.RespondWithSuccess(c, ResponseRewardPayouts2Status{
 			Status: rewardPayoutDetails.Status,
 		})
-		return
 	}
 }
 
@@ -214,7 +210,7 @@ func handlerR3Payout(
 	webhookHttpClient *http.Client,
 ) gin.HandlerFunc {
 	return func(c *gin.Context) {
-		ctx := ginhelpers.GetDDCtxFromGinOrBackground(c)
+		ctx := gh.GetDDCtxFromGinOrBackground(c)
 		l := gh.RequestLogger(c)
 		var req RequestBodyRewardPayout
 		if err := c.ShouldBindJSON(&req); errr.IfErrAndLog(err, &l, "validation") {
@@ -268,7 +264,6 @@ func handlerR3Payout(
 			Status:  rewardPayoutDetails.Status,
 			OrderId: rewardPayoutDetails.OrderID,
 		})
-		return
 	}
 }
 

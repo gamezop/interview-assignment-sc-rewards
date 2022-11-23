@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"math/rand"
 	"net/http"
@@ -24,7 +23,7 @@ import (
 )
 
 func wireApp(testClient *http.Client) (*gin.Engine, *repo.Queries, func()) {
-	err := godotenv.Load(fmt.Sprintf("scratch-cards-rewards.e2e-test.env"))
+	err := godotenv.Load("scratch-cards-rewards.e2e-test.env")
 	errr.FatalIfNotNil(err, "failed to load e2e env")
 	err = envconfig.Process("", &Env)
 	errr.PanicIfNotNil(err, "failed to load env")
@@ -93,6 +92,7 @@ func TestPayoutRewardR2(t *testing.T) {
 
 	// initial require the status to be in pending
 	rewardPayoutDetails, err := repository.GetRewardPayoutByScratchId(ctxBack, ScId)
+	require.Nil(t, err, "expected no error")
 	require.Equal(t, repo.OrderStatusPending, response.Status, "require the r2 to be in pending initially")
 	require.Equal(t, rewardPayoutDetails.OrderID, response.OrderId, "failed to match orderId")
 
@@ -122,6 +122,7 @@ func TestPayoutRewardR3(t *testing.T) {
 
 	// initial require the status to be in pending
 	rewardPayoutDetails, err := repository.GetRewardPayoutByScratchId(ctxBack, ScId)
+	require.Nil(t, err, "expected no error")
 	require.Equal(t, repo.OrderStatusPending, response.Status, "require the r2 to be in pending initially")
 	require.Equal(t, rewardPayoutDetails.OrderID, response.OrderId, "failed to match orderId")
 
