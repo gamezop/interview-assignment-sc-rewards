@@ -18,6 +18,8 @@ services:
   reward_service:
     image: gamezop/interview-assignment:sc-rewards-0.0.2
     restart: unless-stopped
+    ports:
+      - "3010:3010"
     depends_on:
       postgres:
         condition: service_healthy
