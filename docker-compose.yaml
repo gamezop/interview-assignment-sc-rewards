@@ -17,6 +17,7 @@ services:
       retries : 5
   reward_service:
     image: gamezop/interview-assignment:sc-rewards-0.0.2
+    network_mode: host
     restart: unless-stopped
     ports:
       - "3010:3010"
@@ -25,4 +26,4 @@ services:
         condition: service_healthy
     environment:
       - FLAGS_ONLY_SUCCESSFULLY_ORDERS=false
-      - DB_REWARD_PAYOUTS_URI=postgres://postgres:postgres@postgres:5432/reward_service?sslmode=disable
+      - DB_REWARD_PAYOUTS_URI=postgres://postgres:postgres@localhost:2349/reward_service?sslmode=disable
